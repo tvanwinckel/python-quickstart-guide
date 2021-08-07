@@ -624,9 +624,28 @@ print(p.version)
 
 ### Special functions
 
-Repr()
+The `__repr__()` method is used to tell what the string representation of the class should be. It can only have one parameter (`self`) and it should return a string.
 
-Dir()
+```python
+class Language:
+    def __repr__(self)
+        return "The is a language object."
+
+l = Language()
+print(l)
+>>> "The is a language object."
+```
+
+The built-in `dir()` function returns a list of all the attributes in the current scope. With an object as argument, `dir()` tries to return all valid object attributes.
+
+```python
+class Language:
+    def get_name_and_version(self, name, version):
+        return f"This is {name} version {version}"
+
+print(dir(Language))
+>>> ['__doc__', '__init__', '__module__', 'get_name_and_version']
+```
 
 While looking at older Python code, you might encounter code that was originally targetted for Python2. When they switched from version 2 to 3 a few changes where made in the background to how objects are created. One of the most visual differences you will come across with will be the class declarations signature.
 

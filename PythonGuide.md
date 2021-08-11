@@ -6,11 +6,18 @@
 
 The goal of this document is go offer you an easy and quick way to get started with the Python programming language. Following topics will be covered:
 
-- Variables
-- Conditionals
-- Creating and running Python modules
-- Classes & objects
-- ...
+- Getting Started
+- Basic Concepts
+- Control Flow
+- Collections
+- Loops
+- Strings
+- Functions
+- Modules
+- Date and time
+- Working with files
+- Classes
+- Sources
 
 ---
 

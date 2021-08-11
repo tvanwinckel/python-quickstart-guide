@@ -70,10 +70,10 @@ Python supports different types of arithmetic operations that can be performed o
 
 - `+` addition
 - `-` subtraction
-- `*` subtraction
-- `/` subtraction
-- `%` subtraction
-- `**` subtraction
+- `*` multiplication
+- `/` division
+- `%` modulus
+- `**` exponentiation
 
 A couple of examples:
 
@@ -120,7 +120,7 @@ concat = language + version
 
 ### Print function
 
-The print() function is used to output text, numbers, or other printable information to the console.
+The `print()` function is used to output text, numbers, or other printable information to the console.
 
 ```python
 hw = "Hello World!"
@@ -541,7 +541,7 @@ string = "PythoN"
 print(string.lower())
 >>> "python"
 print(string.upper())
->>> "PYTHON
+>>> "PYTHON"
 ```
 
 `.split()` will spit a string into a list of items. If no arguments are given the method will split on whitespace by default. When an argument is passed, that argument will be used as the delimiter on which to split the string.

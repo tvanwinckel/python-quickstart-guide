@@ -2,7 +2,7 @@
 
 ## Intro and overview
 
-> Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together. Python supports modules and packages, which encourages program modularity and code reuse. 
+> Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together. Python supports modules and packages, which encourages program modularity and code reuse.
 
 The goal of this document is go offer you an easy and quick way to get started with the Python programming language. Following topics will be covered:
 
@@ -33,6 +33,14 @@ Hello World!
 >>> exit()
 ```
 
+### Running a python script
+
+Running a Python file can be easily done by using the `python` command.
+
+```bash
+> python my-python-file.py
+```
+
 ---
 
 ## Basic Concepts
@@ -60,7 +68,7 @@ Python supports different types of arithmetic operations that can be performed o
 - `%` subtraction
 - `**` subtraction
 
-A couple of examples: 
+A couple of examples:
 
 ```python
 result = 10 + 5
@@ -90,7 +98,7 @@ float = 1.001
 complex = 1j
 ```
 
-A string is a sequence of characters (letters, numbers, whitespace or punctuation) enclosed by quotation marks. It can be enclosed using either the double quotation mark `"` or the single quotation mark `'`. If a string has to be broken into multiple lines, the backslash character `\` can be used to indicate that the string continues on the next line. 
+A string is a sequence of characters (letters, numbers, whitespace or punctuation) enclosed by quotation marks. It can be enclosed using either the double quotation mark `"` or the single quotation mark `'`. If a string has to be broken into multiple lines, the backslash character `\` can be used to indicate that the string continues on the next line.
 Python supports the joining (concatenation) of strings together using the `+` operator. If the parameters passed to `+` have different types, then Python will report an error condition.
 
 ```python
@@ -204,7 +212,7 @@ In this guide we will take a look at lists and dictionaries and provide an examp
 
 ### Lists
 
-Lists are ordered collections of items that allow for easy use of a set of data. List values are placed in between square brackets [ ], separated by commas. Empty lists do not contain any values within the square brackets.
+Lists are ordered collections of items that allow for easy use of a set of data. List values are placed in between square brackets `[ ]`, separated by commas. Empty lists do not contain any values within the square brackets.
 They are a versatile data type that can contain multiple different data types within the same square brackets. The possible data types within a list include numbers, strings, other objects, and even other lists.
 
 ```python
@@ -353,7 +361,30 @@ print(dictionary)
 
 ### Examples of Tuple and Set
 
-TODO
+A tuple is used to store certain data in a structured way, not meant to be edited. Therefore a tuple is and should be immutable. On the other hand a list is used to store multiple items (for example tuples). The list can be edited when more data is added or removed, making it mutable.
+
+```python
+tuple = (1, 2, 3)
+tuple = ("1", "2", "3")
+
+# getting data from a tuple
+tuple = ("python", 3)
+
+tuple[0] -> "python"
+tuple[1] -> 3
+```
+
+In a set every item can only exist once. It is however possible to construct a set with 'duplicates', in this case Python will only use the first entry and ignore all the other ones.
+
+```python
+systems = {"Windows", "Linux", "MacOs"}
+system_duplicates = {"Windows", "Linux", "Linux", "MacOs"}
+
+print(systems)
+>>> {"Windows", "Linux", "MacOs"}
+print(system_duplicates)
+>>> {"Windows", "Linux", "MacOs"}
+```
 
 ---
 
@@ -445,13 +476,117 @@ print(result)
 
 ## Strings
 
+String, refering to a sequence of characters, can be any length and can include any character such as letters, numbers, symbols, and whitespace (spaces, tabs, new lines).
+
+Strings are immutable in Python. This means that once a string has been defined, it can’t be changed. There are no mutating methods for strings. This is unlike data types like lists, which can be modified once they are created.
+
+Python strings can be indexed using the same notation as lists, since strings are lists of characters. A single character can be accessed with bracket notation `[index]`, or a substring can be accessed using slicing `[start:end]`. Indexing with negative numbers counts from the end of the string.
+
+```python
+string = "python"
+
+string[0]   -> p
+string[3]   -> i
+string[-1]  -> n
+```
+
+Strings can also easily be combined with the `+` operator.
+
+```python
+first = "Hello "
+second = "World!"
+
+print(first + second)
+>>> "Hello world!"
+```
+
+The keyword `in` can be used to check if a string contains a specific character or substring. A `True` or `False` is returned depending if a match was found or not.
+
+```python
+string = "Programming with Python"
+
+print("P" in string)
+>>> True
+print("Programming" in string)
+>>> True
+print("x" in string)
+>>> False
+```
+
+### String methods
+
+As is the case with other Python datatypes, strings also come with a set of build-in methods.
+
+The `.len()` function can be used to determine the length of an object. In this case when you pass a string to it, it will return the length of the string.
+
+```python
+string = "python"
+
+print(len(string))
+>>> 6
+```
+
+The string method `.lower()` returns a string with all uppercase characters converted into lowercase. While the method `.upper()` returns a string with all characters converted to uppercase.
+
+```python
+string = "PythoN"
+
+print(string.lower())
+>>> "python"
+print(string.upper())
+>>> "PYTHON
+```
+
+`.split()` will spit a string into a list of items. If no arguments are given the method will split on whitespace by default. When an argument is passed, that argument will be used as the delimiter on which to split the string.
+
+```python
+string = "Programming with Python"
+
+print(string.split())
+>>> ["Programming", "with", "Python"]
+
+print(string.split("i"))
+>>> ["Programm", "ng w", "th Python"]
+```
+
+The `.join()` method concatenates a list of strig together to create a new string joined with a chosen delimiter.
+
+```python
+list_of_strings = ["Programming", "with", "Python"]
+
+result = "-".join(list_of_strings)
+print(result)
+>>> = "Programming-with-Python"
+```
+
+`.strip()` can be used to remove characters from the beginning and end of a string. A string argument can be passed to the method, specifying the set of characters to be stripped. When no argument is given, whitespaces are removed by default.
+
+```python
+string = "   Programming with Python   "
+
+print(string.strip())
+>>> "Programming with Python"
+```
+
+### f-string
+
+f-strings are a simplified notation to insert a variable into a string by using a placeholder. A string is marked as an f-string by prefixing the string with `f`. Placeholders are defined in the string by using curly brackets `{ }`.
+
+```python
+language = "Python"
+version = 3
+
+result = f"We are programming in {language} with version {version}."
+print(result)
+>>> "We are programming in Python with version 3."
+```
+
 ---
 
 ## Functions
 
-Certain tasks need to be performed multiple times. Instead of rewriting the same code in multiple places, a function can be defined using the `def` keyword. Function definitions may include parameters for data input to the function. 
+Certain tasks need to be performed multiple times. Instead of rewriting the same code in multiple places, a function can be defined using the `def` keyword. Function definitions may include parameters for data input to the function.
 Parameters in Python are variables — placeholders for the actual values the function needs. When the function is called, these values are passed in as arguments. They behave identically to a function’s local variables. And are initialized with the values passed into the function when it was called. Like local variables, parameters cannot be referenced from outside the scope of the function.
-
 
 ```python
 def add_one_to(argument):
@@ -488,11 +623,102 @@ def print_full_name(first_name: str, last_name :str) -> str:
     return first_name + " " + last_name 
 ```
 
-### TODO -> default values
+It is also possible to set a default value for function variables.
 
---- 
+```python
+def print_full_name(first_name: str = "John", last_name :str = "Doe") -> str:
+    return first_name + " " + last_name 
+
+print(print_full_name("Nyctophilopython", "oenpelliensis"))
+>>> "Nyctophilopython oenpelliensis"
+pritn(print_full_name())
+>>> "John Doe"
+```
+
+---
 
 ## Modules
+
+In Python, files that end with the `.py` extension and containing Python code that can be imported inside another Python program are called modules. Modules allow you to organize related functions and/or classes in the same file. By default Python already offers a wide selection of built in modules that can be imported in your own code.
+
+You can import and use the content of another file/module using the `import` keyword. Modules can be imported in three different ways: `import <MODULE>`, `from <MODULE> import <FUNCTION/CLASS`, or `from module import *`. The last one is not encouraged.
+
+```python
+# option one
+import module
+module.function()
+ 
+# option two
+from module import function
+function()
+```
+
+The `as` keyword can be used to give an alternative name to a module or function.
+
+```python
+from calculation-module import floating-point-calculator as cal
+
+cal.add(1, 5)
+```
+
+### Pip
+
+Even though Python comes with an extensive library of included packages and modules, it is possible that you miss a certain package or module to fit your needs.
+Pip is the standard package manager for Python. It allows you to install and manage additional packages throught the `pip` command.
+
+```bash
+> pip help
+
+Usage:
+  pip <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible 
+                              dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  help                        Show help for commands.
+```
+
+### Venv
+
+`venv` is a Python module included in the Python standard library and the prefered way to create and manage virual environments. `venv` allows you to manage separate package isntallations for different projects. In essence it will create a isolated Python installation and will install packages into that virtual installation. If you where to switch projects, you can simply create a new virtual environmetn and not have to worry about breaking the packages installed int he other environments.
+
+```bash
+# setting up a venv for your python project.
+python3 -m venv env
+```
+
+---
+
+## Date and time
+
+Python provides a module named datetime to deal with dates and times. It allows you to set date, time or both date and time using the `date()`, `time()` and `datetime()` functions respectively, after importing the datetime module.
+
+```python
+import datetime
+
+date = datetime.date(year=2021, month=8, day=18)
+print(date) 
+>>> 2019-02-16
+ 
+time = datetime.time(hour=13, minute=48, second=5)
+print(time) 
+>>> 13:48:05
+ 
+timestamp= datetime.datetime(year=2019, month=2, day=16, hour=13, minute=48, second=5)
+print (timestamp) 
+>>> 2019-01-02 13:48:05
+```
 
 ---
 
@@ -514,7 +740,7 @@ with open('example.txt') as file_object:
 print(text_string)
 ```
 
-Instead of reading the entire content of a file, you can read a single line at a time. Use `.readlines()` to return a list of strings, each representing an individual line in the file. 
+Instead of reading the entire content of a file, you can read a single line at a time. Use `.readlines()` to return a list of strings, each representing an individual line in the file.
 
 ```python
 with open('example.txt') as file_object:
@@ -661,86 +887,9 @@ class Language:
 
 ---
 
-### Collection variables
-
-There are a few different collection types: sequences, mappings and sets.
-
-- Sequences containing: list and tuple
-- Mappings containing: dict
-- Sets containing: set
-
-#### Sequences
-
-While both list and tuple might look the same at first glace, they are not. A tuple is used to store certain data in a structured way, not meant to be edited. Therefor a tuple is and should be immutable. On the other hand a list is used to store multiple items (for example tuples). The list can be edited when more data is added or removed, making it mutable.
-
-```python
-list = [1, 2, 3]
-list = ["1", "2", "3"]
-
-tuple = (1, 2, 3)
-tuple = ("1", "2", "3")
-```
-
-Note that both lists and tuples can be constructed out of mixture of items with different type:
-
-```python
-list = [1, 2, "three", (10, 20)]
-tuple = (1, "two", 3)
-```
-
-##### Working with lists and tuples
-
-Get data from a tuple:
-
-```python
-tuple = ("python", 3)
-
-tuple[0] -> "python"
-tuple[1] -> 3
-```
-
-### Sets
-
-In a set every item can only exist once. It is however possible to construct a set with 'duplicates', in this case Python will only the first entry and ignore all other ones.
-
-```python
-set = {"Windows", "Linux", "MacOs"}
-
-set_with_duplicates = {"Windows", "Linux", "Linux", "MacOs"}
-```
-
-```python
-set_with_duplicates = {"Windows", "Linux", "Linux", "MacOs"}
-
-print(set)
->>> {"Windows", "Linux", "MacOs"}
-print(set_with_duplicates)
->>> {"Windows", "Linux", "MacOs"}
-```
----
-
-## Creating and running Python modules
-
-### Python modules
-
-- Create a Python file / module
-- Use a single file as a single script
-- Run the script
-
-### Venv
-
-
-### Pip
-
-
-### Importing other modules
-
-Import python, local and remote modules
-
----
-
-
-
 ## Sources
 
-- https://www.python.org/
+- [Official Python website](https://www.python.org/)
+- [Official pip website](https://pypi.org/project/pip/)
+- [Official Python venv website](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+- [RealPython pip guide](https://realpython.com/what-is-pip/)

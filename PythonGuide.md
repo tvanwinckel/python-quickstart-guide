@@ -17,6 +17,7 @@ The goal of this document is go offer you an easy and quick way to get started w
 - Date and time
 - Working with files
 - Classes
+- Testing
 - Sources
 
 ---
@@ -696,6 +697,16 @@ Commands:
   help                        Show help for commands.
 ```
 
+Note: when you have an existing project, you can use the `freeze` command to extract all your dependencies to a file. This will allow others to import your project and its dependencies much easier. In most cases the file being used will be called `requirements.txt`.
+
+```bash
+# extracting your dependencies to the requirements file
+> pip freeze > requirements.txt
+
+# importing dependencies from the requirements file
+> pip install -r requirements.txt
+```
+
 ### Venv
 
 `venv` is a Python module included in the Python standard library and the prefered way to create and manage virual environments. `venv` allows you to manage separate package isntallations for different projects. In essence it will create a isolated Python installation and will install packages into that virtual installation. If you where to switch projects, you can simply create a new virtual environmetn and not have to worry about breaking the packages installed int he other environments.
@@ -894,9 +905,74 @@ class Language:
 
 ---
 
+## Testing
+
+Testing your code increases your confidence that the code behaves as you expect and ensures that changes to your code won’t cause regressions. Python comes with a built in test and testrunner library: `unittest`. Another popular choise is `pytest`.
+
+### Unittest
+
+To use `unittest`you have to follow the following rules:
+
+- Test are put into classes as methods.
+- A series of special assertion methods in the `unittest.TestCase` class instead of the built-in assert statement.
+
+```python
+from unittest import TestCase
+
+class ExampleUnittest(TestCase):
+    def test_always_passes(self):
+        self.assertTrue(True)
+
+    def test_always_fails(self):
+        self.assertTrue(False)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+A few other assertion methods for unittest are: `.assertEqual()`, `.assertTrue()`, `.assertFalse()`, `.assertIs()`, `.assertIsNone()`, `.assertIn()`
+
+Running a `unittest` test can be done through the python command itself:
+
+```bash
+> python -m unittest test
+```
+
+### Pytest
+
+Pytest is an external library and therefore will require you to install it firt. This can be done by using pip.
+
+```bash
+> pip install pytest
+```
+
+`pytest` also supports execution of `unittest` test cases.
+Pytest test cases are a series of functions in a Python file starting with the `test_`prefix. Some other advantages are:
+
+- Support for the built-in `assert` statement instead of using special `self.assert` methods.
+- Ability to rerun from the last failing test.
+- Plugins to extend the functionality (for example fixtures, parameterise, ...).
+
+```python
+def test_always_passes():
+    assert True
+
+def test_always_fails():
+    assert False
+```
+
+Running a `pytest` test can be done with the following command:
+
+```bash
+```
+
+---
+
 ## Sources
 
 - [Official Python website](https://www.python.org/)
 - [Official pip website](https://pypi.org/project/pip/)
 - [Official Python venv website](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 - [RealPython pip guide](https://realpython.com/what-is-pip/)
+- [Unittest Documentation](https://docs.python.org/3/library/unittest.html)
+- [Pytest website](https://docs.pytest.org/en/latest/)

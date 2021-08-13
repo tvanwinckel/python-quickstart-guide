@@ -950,8 +950,9 @@ Pytest is an external library and therefore will require you to install it firt.
 Pytest test cases are a series of functions in a Python file starting with the `test_`prefix. Some other advantages are:
 
 - Support for the built-in `assert` statement instead of using special `self.assert` methods.
+- Additional features like fixtures and parameterization.
 - Ability to rerun from the last failing test.
-- Plugins to extend the functionality (for example fixtures, parameterise, ...).
+- Plugins to extend the functionality.
 
 ```python
 def test_always_passes():
@@ -964,6 +965,7 @@ def test_always_fails():
 Running a `pytest` test can be done with the following command:
 
 ```bash
+> pytest test.py
 ```
 
 ---

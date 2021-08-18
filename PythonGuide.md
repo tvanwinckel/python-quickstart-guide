@@ -1009,3 +1009,11 @@ Running a `pytest` test can be done with the following command:
 - [RealPython pip guide](https://realpython.com/what-is-pip/)
 - [Unittest Documentation](https://docs.python.org/3/library/unittest.html)
 - [Pytest website](https://docs.pytest.org/en/latest/)
+
+## Feedback
+
+- More in depth examples of pip/venv
+- Classes: classmethods, staticmethods
+- Testing: examples of fixture, parameterize. Livecoding was cool but also put it in the text.
+- Forgot about exceptions/error handling
+- Classes: fun challenge of multi-object inheritance.

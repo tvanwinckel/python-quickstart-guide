@@ -14,7 +14,6 @@ help:
 	@echo "init-venv:						Sets up the project, preparing the Python venv and installs dependencies."
 	@echo "update-dependencies:				Update all installed dependencies."
 	@echo "ut:								Run unittests."
-	@echo "build:							Package a build/deployment folder for ${APPLICATION_NAME}."
 
 
 create-venv:
@@ -24,6 +23,9 @@ install-dependencies:
 	${VENV_HOME}/pip3 install -r requirements.txt
 
 init-venv: create-venv install-dependencies
+
+ut:
+	pytest test
 
 clean:
 	test ! -d build || rm -r build

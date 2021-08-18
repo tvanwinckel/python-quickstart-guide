@@ -848,10 +848,10 @@ By default classes come with a set 'special' function. These functions can be ov
 ```python
 class Language:
     def __init__(self, name: str):
-        self.name
+        self.name = name
 
 python = Language("Python")
-java = ("Java")
+java = Language("Java")
 ```
 
 ### Class variables

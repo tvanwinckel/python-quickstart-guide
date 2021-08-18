@@ -643,6 +643,37 @@ pritn(print_full_name())
 >>> "John Doe"
 ```
 
+### Lambda functions
+
+A lambda function is a small anonymous function that can take any number of arguments but can only contain one expression.
+
+```python
+lambda argument(s): expression
+```
+
+Using lambda functions in Python comes with its pros and cons:
+
+- They are good vor simple logical operations that are easy to read/understand.
+- They are encouraged when you have a small function you will only use once.
+- They can only perform one expression, making it impossible to have multiple independante operations in one function.
+- Bad for operations that would span more than one line (for example loops or if statements).
+
+```python
+# regular function
+def add_one(number: int):
+    return number + 1
+
+# lambda alternative
+add_one = lambda number: number + 1
+print(add_one(5))
+>>> 6
+
+# lambda function with multiple arguments
+addition = lambda first, second: first + second
+print(addition(4, 2))
+>>> 6
+```
+
 ---
 
 ## Modules
